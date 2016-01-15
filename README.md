@@ -44,7 +44,7 @@ Install the built RPM by running "sudo yum install RPMS/x86_64/pg_jobmon-1.3.1-1
 
 ## Usage
 
-    Please refer to  the folloing links for usage details.
+    Please refer to  the following links for usage details.
     https://github.com/omniti-labs/pg_jobmon and
     https://wiki.postgresql.org/images/0/08/Pgconfnyc2014_whenpgcantyoucan.pdf
 
