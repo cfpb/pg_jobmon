@@ -25,7 +25,7 @@ Build RPM using Vagrant
     1. The repo is cloned into a local sandbox
     2. Run "vagrant up" to build the VM.
     3. Run "vagrant ssh" to connect to VM.
-    4. Run rpmbuild -ba SPECS/pg_jobmon.spec 'pg_dir /usr/pgsql-9.4' to build the pg_jobmon rpm package.
+    4. Run rpmbuild -ba SPECS/pg_jobmon.spec --define 'pg_dir /usr/pgsql-9.4' to build the pg_jobmon rpm package.
 
 Build RPM on server
 
