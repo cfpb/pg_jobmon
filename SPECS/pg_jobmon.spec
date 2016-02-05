@@ -1,8 +1,5 @@
 %global _version 1.3.1
 
-%define pg_dir /usr/pgsql-9.4
-
-
 
 Name:           pg_jobmon
 Version:        %{_version}
@@ -22,15 +19,11 @@ pg_jobmon is an extension to add the capability to log the progress of running f
 The logging is done in a NON-TRANSACTIONAL method, so that if your function fails for any reason, all steps up to that point are kept in the log tables.
 See the pg_jobmon.md file in docs for more details. Also see the following blog for some examples and tips: http://www.keithf4.com/tag/pg_jobmon/
 
-
-
-
 ###############################################################################################################################################################
 # Build requirements
 
 BuildRoot: %(mktemp -ud %{_tmppath}/build/%{name}-%{version}-%{release}-XXXXXX)
 BuildRequires: postgresql-devel, postgresql
-
 
 
 ###############################################################################################################################################################
@@ -48,42 +41,42 @@ make
 
 ###############################################################################################################################################################
 %install
-mkdir -p %{buildroot}/etc/profile.d
-echo "export PATH=$PATH:%{pg_dir}/bin/" >> %{buildroot}/etc/profile.d/pg_jobmon.sh
-echo "export USE_PGXS=1" >> %{buildroot}/etc/profile.d/pg_jobmon.sh
-source %{buildroot}/etc/profile.d/pg_jobmon.sh
+#mkdir -p %{buildroot}/etc/profile.d
+#echo "export PATH=$PATH:%{pg_dir}/bin/" >> %{buildroot}/etc/profile.d/pg_jobmon.sh
+#echo "export USE_PGXS=1" >> %{buildroot}/etc/profile.d/pg_jobmon.sh
+#source %{buildroot}/etc/profile.d/pg_jobmon.sh
 
 %make_install
 
 
 ###############################################################################################################################################################
 %files
-/etc/profile.d/pg_jobmon.sh
-%{pg_dir}/share/extension/pg_jobmon--0.1.2--0.2.0.sql
-%{pg_dir}/share/extension/pg_jobmon--0.2.0--0.2.1.sql
-%{pg_dir}/share/extension/pg_jobmon--0.3.0--0.3.1.sql
-%{pg_dir}/share/extension/pg_jobmon--0.3.1--0.3.2.sql
-%{pg_dir}/share/extension/pg_jobmon--0.3.2--0.3.3.sql
-%{pg_dir}/share/extension/pg_jobmon--0.3.3--0.3.4.sql
-%{pg_dir}/share/extension/pg_jobmon--0.3.4--0.3.5.sql
-%{pg_dir}/share/extension/pg_jobmon--0.3.5--0.4.0.sql
-%{pg_dir}/share/extension/pg_jobmon--0.4.0--0.4.1.sql
-%{pg_dir}/share/extension/pg_jobmon--0.4.1--0.4.2.sql
-%{pg_dir}/share/extension/pg_jobmon--0.4.2--0.4.3.sql
-%{pg_dir}/share/extension/pg_jobmon--0.4.3--0.4.4.sql
-%{pg_dir}/share/extension/pg_jobmon--0.4.4--0.4.5.sql
-%{pg_dir}/share/extension/pg_jobmon--0.4.5--1.0.0.sql
-%{pg_dir}/share/extension/pg_jobmon--1.0.0--1.0.1.sql
-%{pg_dir}/share/extension/pg_jobmon--1.0.1--1.0.2.sql
-%{pg_dir}/share/extension/pg_jobmon--1.0.2--1.1.0.sql
-%{pg_dir}/share/extension/pg_jobmon--1.1.0--1.1.1.sql
-%{pg_dir}/share/extension/pg_jobmon--1.1.1--1.1.2.sql
-%{pg_dir}/share/extension/pg_jobmon--1.1.2--1.1.3.sql
-%{pg_dir}/share/extension/pg_jobmon--1.1.3--1.2.0.sql
-%{pg_dir}/share/extension/pg_jobmon--1.2.0--1.3.0.sql
-%{pg_dir}/share/extension/pg_jobmon--1.3.0--1.3.1.sql
-%{pg_dir}/share/extension/pg_jobmon.control
+#/etc/profile.d/pg_jobmon.sh
+/usr/pgsql-9.4/share/extension/pg_jobmon--0.1.2--0.2.0.sql
+/usr/pgsql-9.4/share/extension/pg_jobmon--0.2.0--0.2.1.sql
+/usr/pgsql-9.4/share/extension/pg_jobmon--0.3.0--0.3.1.sql
+/usr/pgsql-9.4/share/extension/pg_jobmon--0.3.1--0.3.2.sql
+/usr/pgsql-9.4/share/extension/pg_jobmon--0.3.2--0.3.3.sql
+/usr/pgsql-9.4/share/extension/pg_jobmon--0.3.3--0.3.4.sql
+/usr/pgsql-9.4/share/extension/pg_jobmon--0.3.4--0.3.5.sql
+/usr/pgsql-9.4/share/extension/pg_jobmon--0.3.5--0.4.0.sql
+/usr/pgsql-9.4/share/extension/pg_jobmon--0.4.0--0.4.1.sql
+/usr/pgsql-9.4/share/extension/pg_jobmon--0.4.1--0.4.2.sql
+/usr/pgsql-9.4/share/extension/pg_jobmon--0.4.2--0.4.3.sql
+/usr/pgsql-9.4/share/extension/pg_jobmon--0.4.3--0.4.4.sql
+/usr/pgsql-9.4/share/extension/pg_jobmon--0.4.4--0.4.5.sql
+/usr/pgsql-9.4/share/extension/pg_jobmon--0.4.5--1.0.0.sql
+/usr/pgsql-9.4/share/extension/pg_jobmon--1.0.0--1.0.1.sql
+/usr/pgsql-9.4/share/extension/pg_jobmon--1.0.1--1.0.2.sql
+/usr/pgsql-9.4/share/extension/pg_jobmon--1.0.2--1.1.0.sql
+/usr/pgsql-9.4/share/extension/pg_jobmon--1.1.0--1.1.1.sql
+/usr/pgsql-9.4/share/extension/pg_jobmon--1.1.1--1.1.2.sql
+/usr/pgsql-9.4/share/extension/pg_jobmon--1.1.2--1.1.3.sql
+/usr/pgsql-9.4/share/extension/pg_jobmon--1.1.3--1.2.0.sql
+/usr/pgsql-9.4/share/extension/pg_jobmon--1.2.0--1.3.0.sql
+/usr/pgsql-9.4/share/extension/pg_jobmon--1.3.0--1.3.1.sql
+/usr/pgsql-9.4/share/extension/pg_jobmon.control
 /usr/share/doc/pgsql/extension/pg_jobmon.md
 
-%{pg_dir}/share/extension/pg_jobmon--1.3.1--1.3.2.sql
-%{pg_dir}/share/extension/pg_jobmon--1.3.2.sql
+/usr/pgsql-9.4/share/extension/pg_jobmon--1.3.1--1.3.2.sql
+/usr/pgsql-9.4/share/extension/pg_jobmon--1.3.2.sql
