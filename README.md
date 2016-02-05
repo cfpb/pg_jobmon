@@ -55,7 +55,7 @@ Install the built RPM by running "sudo yum install RPMS/x86_64/pg_jobmon-1.3.1-1
 
     There is a compilation error that is displayed during the RPM build process. 
     This is corrected by setting the right path for pg_config
-    This is related to the build process and does not affect the usability of the packag.
+    This is related to the build process and does not affect the usability of the package.
 
 ## Getting help
 
