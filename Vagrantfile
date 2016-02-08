@@ -13,7 +13,7 @@ Vagrant.configure("2") do |config|
       pgmon_config.vm.network :private_network, ip: "192.168.1.22"
       pgmon_config.vm.provider "virtualbox" do |vb|
       end 
-      pgmon_config.vm.provision :shell, path: "bootstrap-pgmon.sh", privileged: false
+      pgmon_config.vm.provision :shell, path: "bootstrap.sh", privileged: false
   end 
 
 end
