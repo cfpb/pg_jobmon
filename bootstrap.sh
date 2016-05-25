@@ -8,7 +8,9 @@ if [ "$SCRIPTPATH" = "/tmp" ] ; then
    fi
   
   mkdir -p $HOME/rpmbuild/{BUILD,RPMS,SOURCES,SRPMS}
- ln -sf /Users/ezeogum/Projects/pg_mon.task/SPECS $HOME/rpmbuild/SPECS
+ln -sf $SCRIPTPATH/SPECS $HOME/rpmbuild/SPECS
+
 echo '%_topdir '$HOME'/rpmbuild' > $HOME/.rpmmacros
+
 cd $HOME/rpmbuild/SOURCES
 wget https://github.com/omniti-labs/pg_jobmon/archive/master.tar.gz
