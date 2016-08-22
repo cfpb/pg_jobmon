@@ -1,4 +1,4 @@
-# PG_JOBMON RPM built for RHEL 6.5
+# PG_JOBMON RPM built for RHEL 6.X
 
 **Description**: This project to build an pg_jobmon spec file for building the pg_jobmon rpm package as an extension for Postgresql.
 
@@ -15,7 +15,8 @@
 
 ## Dependencies
 
-    The build process for the pg_jobmon rpm requires postgresql9.4-devel and postgresql9.4 (x86_64) packages. 
+    The build process for the pg_jobmon rpm requires postgresql9.5-devel and postgresql9.5 (x86_64) packages. 
+    You can check this link out if you don't have the postgresql9.5 packages on your system - http://tecadmin.net/install-postgresql-9-5-on-centos/#
     And the package is intended for an x86_64 system.
 
 ## Installation
@@ -25,13 +26,13 @@ Build RPM using Vagrant
     1. The repo is cloned into a local sandbox
     2. Run "vagrant up" to build the VM.
     3. Run "vagrant ssh" to connect to VM.
-    4. Run rpmbuild -ba SPECS/pg_jobmon.spec --define 'pg_dir /usr/pgsql-9.4' to build the pg_jobmon rpm package.
+    4. Run rpmbuild -ba SPECS/pg_jobmon.spec --define 'pg_dir /usr/pgsql-9.5' to build the pg_jobmon rpm package.
 
 Build RPM on server
 
     1. Once repo is cloned, run "sh ./bootstrap.sh"
     2. cd to ~/rpmbuild 
-    3. Run rpmbuild -ba /SPECS/pg_jobmon.spec --define 'pg_dir /usr/pgsql-9.4'
+    3. Run rpmbuild -ba /SPECS/pg_jobmon.spec --define 'pg_dir /usr/pgsql-9.5'
 
 Please note that "pg_dir" must be accessible in your environment path
 
@@ -83,3 +84,4 @@ See below links
 
     https://wiki.postgresql.org/images/0/08/Pgconfnyc2014_whenpgcantyoucan.pdf
     https://github.com/omniti-labs/pg_jobmon
+    http://tecadmin.net/install-postgresql-9-5-on-centos/#

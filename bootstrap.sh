@@ -14,3 +14,4 @@ echo '%_topdir '$HOME'/rpmbuild' > $HOME/.rpmmacros
 
 cd $HOME/rpmbuild/SOURCES
 wget https://github.com/omniti-labs/pg_jobmon/archive/master.tar.gz
+
