@@ -1,7 +1,7 @@
 %global _version 1.3.1
 
 
-Name:           pg_jobmon
+Name:           pg_jobmon%{suffix}
 Version:        %{_version}
 Release:        1%{?dist}
 Summary:        postgresql extension for logging and monitoring automated jobs
@@ -10,8 +10,8 @@ Group:          Development/Tools
 License:        pg_jobmon is released under the PostgreSQL License, a liberal Open Source license, similar to the BSD or MIT licenses
 URL:            https://github.com/omniti-labs/pg_jobmon
 Source0:        https://github.com/omniti-labs/pg_jobmon/archive/master.tar.gz
-Obsoletes:      pg_jobmon <= 1.3.0
-Provides:       pg_jobmon => 1.3.1
+Obsoletes:      pg_jobmon%{suffix} <= 1.3.0
+Provides:       pg_jobmon%{suffix} => 1.3.1
 
 
 %description
@@ -37,7 +37,7 @@ BuildRequires: postgresql-devel, postgresql
 ###############################################################################################################################################################
 %build
 
-make
+#make
 
 ###############################################################################################################################################################
 %install
@@ -46,10 +46,9 @@ echo "export PATH=$PATH:%{pg_dir}/bin/" >> %{buildroot}/etc/profile.d/pg_jobmon.
 echo "export USE_PGXS=1" >> %{buildroot}/etc/profile.d/pg_jobmon.sh
 source %{buildroot}/etc/profile.d/pg_jobmon.sh
 
-%make_install
+###%make_install
 
 
 ###############################################################################################################################################################
 %files
 /etc/profile.d/pg_jobmon.sh
-/usr/pgsql-9.5
