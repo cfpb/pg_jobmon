@@ -37,18 +37,24 @@ BuildRequires: postgresql-devel, postgresql
 ###############################################################################################################################################################
 %build
 
-#make
+make %{?_smp_mflags}
 
 ###############################################################################################################################################################
 %install
 mkdir -p %{buildroot}/etc/profile.d
-echo "export PATH=$PATH:%{pg_dir}/bin/" >> %{buildroot}/etc/profile.d/pg_jobmon.sh
-echo "export USE_PGXS=1" >> %{buildroot}/etc/profile.d/pg_jobmon.sh
+
+echo 'export PATH=$PATH:%{pg_dir}/bin/' >> %{buildroot}/etc/profile.d/pg_jobmon.sh
+echo 'export USE_PGXS=1' >> %{buildroot}/etc/profile.d/pg_jobmon.sh
 source %{buildroot}/etc/profile.d/pg_jobmon.sh
 
-###%make_install
+%make_install
 
+
+###############################################################################################################################################################
+%clean
+[ -d "%{_BUILDROOTdir}" -a "%{_BUILDROOTdir}" != "/" ] && rm -rf %{_BUILDROOTdir}
 
 ###############################################################################################################################################################
 %files
 /etc/profile.d/pg_jobmon.sh
+/usr/pgsql-9.5
