@@ -1,7 +1,7 @@
 %global _version 1.3.1
 
 
-Name:           pg_jobmon%{suffix}
+Name:           pg_jobmon%{_suffix}
 Version:        %{_version}
 Release:        1%{?dist}
 Summary:        postgresql extension for logging and monitoring automated jobs
@@ -10,8 +10,8 @@ Group:          Development/Tools
 License:        pg_jobmon is released under the PostgreSQL License, a liberal Open Source license, similar to the BSD or MIT licenses
 URL:            https://github.com/omniti-labs/pg_jobmon
 Source0:        https://github.com/omniti-labs/pg_jobmon/archive/master.tar.gz
-Obsoletes:      pg_jobmon%{suffix} <= 1.3.0
-Provides:       pg_jobmon%{suffix} => 1.3.1
+Obsoletes:      pg_jobmon%{_suffix} <= 1.3.0
+Provides:       pg_jobmon%{_suffix} = 1.3.1
 
 
 %description
@@ -23,7 +23,7 @@ See the pg_jobmon.md file in docs for more details. Also see the following blog 
 # Build requirements
 
 BuildRoot: %(mktemp -ud %{_tmppath}/build/%{name}-%{version}-%{release}-XXXXXX)
-BuildRequires: postgresql-devel, postgresql
+BuildRequires: postgresql%{_suffix}-devel, postgresql${_suffix}
 
 
 ###############################################################################################################################################################
@@ -41,13 +41,8 @@ make %{?_smp_mflags}
 
 ###############################################################################################################################################################
 %install
-mkdir -p %{buildroot}/etc/profile.d
 
-echo 'export PATH=$PATH:%{pg_dir}/bin/' >> %{buildroot}/etc/profile.d/pg_jobmon.sh
-echo 'export USE_PGXS=1' >> %{buildroot}/etc/profile.d/pg_jobmon.sh
-source %{buildroot}/etc/profile.d/pg_jobmon.sh
-
-%make_install
+make install USE_PGXS=1 DESTDIR=${RPM_BUILD_ROOT}
 
 
 ###############################################################################################################################################################
@@ -56,5 +51,4 @@ source %{buildroot}/etc/profile.d/pg_jobmon.sh
 
 ###############################################################################################################################################################
 %files
-/etc/profile.d/pg_jobmon.sh
 /usr/pgsql-9.5
